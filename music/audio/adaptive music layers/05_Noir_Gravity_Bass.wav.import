@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/05_Noir_Gravity_Bass.wav-aec1e5a4b5dd680fba2eed100bc9b5fe.sample"
+
+[deps]
+
+source_file="res://music/audio/adaptive music layers/05_Noir_Gravity_Bass.wav"
+dest_files=[ "res://.import/05_Noir_Gravity_Bass.wav-aec1e5a4b5dd680fba2eed100bc9b5fe.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

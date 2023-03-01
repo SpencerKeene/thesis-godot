@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://music/audio/other music/SpookyMystical.wav" type="AudioStream" id=1]
+[ext_resource path="res://addons/mixing-desk/music/song.gd" type="Script" id=2]
+[ext_resource path="res://addons/mixing-desk/music/mixing_desk_music.gd" type="Script" id=3]
+[ext_resource path="res://addons/mixing-desk/music/containers/core_cont.gd" type="Script" id=4]
+[ext_resource path="res://music/audio/other music/Sad Electric Guitar.wav" type="AudioStream" id=5]
+[ext_resource path="res://music/audio/other music/Happy Epiano.wav" type="AudioStream" id=6]
+[ext_resource path="res://music/scripts/music.gd" type="Script" id=7]
+[ext_resource path="res://music/audio/other music/Angry Mom Drums.wav" type="AudioStream" id=8]
+[ext_resource path="res://music/audio/other music/Scary UK Drill Ice Spice.wav" type="AudioStream" id=9]
+[ext_resource path="res://music/scripts/client_fetch.gd" type="Script" id=10]
+
+[node name="MusicClient" type="Node"]
+script = ExtResource( 10 )
+
+[node name="Music" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="MixingDeskMusic" type="Node" parent="Music"]
+script = ExtResource( 3 )
+play_mode = 1
+autoplay = true
+autoplay_song = NodePath("Neutral")
+
+[node name="Happy" type="Node" parent="Music/MixingDeskMusic"]
+script = ExtResource( 2 )
+tempo = 210
+bars = 12
+beats_in_bar = 4
+
+[node name="CoreContainer" type="Node" parent="Music/MixingDeskMusic/Happy"]
+script = ExtResource( 4 )
+
+[node name="SadElectricGuitar" type="AudioStreamPlayer" parent="Music/MixingDeskMusic/Happy/CoreContainer"]
+stream = ExtResource( 5 )
+pitch_scale = 1.5
+
+[node name="Sad" type="Node" parent="Music/MixingDeskMusic"]
+script = ExtResource( 2 )
+tempo = 140
+bars = 8
+beats_in_bar = 4
+
+[node name="CoreContainer" type="Node" parent="Music/MixingDeskMusic/Sad"]
+script = ExtResource( 4 )
+
+[node name="SadElectricGuitar" type="AudioStreamPlayer" parent="Music/MixingDeskMusic/Sad/CoreContainer"]
+stream = ExtResource( 5 )
+
+[node name="Angry" type="Node" parent="Music/MixingDeskMusic"]
+script = ExtResource( 2 )
+tempo = 140
+bars = 8
+beats_in_bar = 4
+
+[node name="CoreContainer" type="Node" parent="Music/MixingDeskMusic/Angry"]
+script = ExtResource( 4 )
+
+[node name="AngryMomDrums" type="AudioStreamPlayer" parent="Music/MixingDeskMusic/Angry/CoreContainer"]
+stream = ExtResource( 8 )
+
+[node name="Fearful" type="Node" parent="Music/MixingDeskMusic"]
+script = ExtResource( 2 )
+tempo = 147
+bars = 4
+beats_in_bar = 4
+
+[node name="CoreContainer" type="Node" parent="Music/MixingDeskMusic/Fearful"]
+script = ExtResource( 4 )
+
+[node name="ScaryPiano" type="AudioStreamPlayer" parent="Music/MixingDeskMusic/Fearful/CoreContainer"]
+stream = ExtResource( 9 )
+
+[node name="ScaryBackground" type="AudioStreamPlayer" parent="Music/MixingDeskMusic/Fearful/CoreContainer"]
+stream = ExtResource( 1 )
+pitch_scale = 1.15
+
+[node name="Neutral" type="Node" parent="Music/MixingDeskMusic"]
+script = ExtResource( 2 )
+tempo = 140
+bars = 8
+beats_in_bar = 4
+
+[node name="CoreContainer" type="Node" parent="Music/MixingDeskMusic/Neutral"]
+script = ExtResource( 4 )
+
+[node name="HappyEpiano" type="AudioStreamPlayer" parent="Music/MixingDeskMusic/Neutral/CoreContainer"]
+stream = ExtResource( 6 )

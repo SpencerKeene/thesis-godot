@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/00_Noir_Gravity_Soundtrack_180BPM.mp3-02faaffd5063c23355fe044f189bd597.mp3str"
+
+[deps]
+
+source_file="res://music/audio/adaptive music layers/00_Noir_Gravity_Soundtrack_180BPM.mp3"
+dest_files=[ "res://.import/00_Noir_Gravity_Soundtrack_180BPM.mp3-02faaffd5063c23355fe044f189bd597.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
