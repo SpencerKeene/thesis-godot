@@ -8,6 +8,9 @@ signal error
 var _status: int = 0
 var _stream: StreamPeerTCP = StreamPeerTCP.new()
 
+# variables for testing
+var connection_start: int
+
 func _ready() -> void:
 	_status = _stream.get_status()
 
@@ -42,6 +45,8 @@ func _process(delta: float) -> void:
 				emit_signal("data", data[1])
 
 func connect_to_host(host: String, port: int) -> void:
+	# Record time that connection started
+	connection_start = OS.get_ticks_usec()
 	#print("Connecting to %s:%d" % [host, port])
 	# Reset status so we can tell if it changes to error again.
 	_status = _stream.STATUS_NONE

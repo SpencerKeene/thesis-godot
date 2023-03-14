@@ -14,9 +14,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Space Adventure"
+config/name="Thesis - Space Adventure"
 run/main_scene="res://ui/scene/Main.tscn"
 config/icon="res://icon.png"
+
+[audio]
+
+default_bus_layout=""
 
 [autoload]
 
