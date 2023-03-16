@@ -19,16 +19,16 @@ var times_dir = "request_times"
 var times_filename = "request_times_" + datetime_of_game_start + ".txt"
 var times_path = "user://" + times_dir + "/" + times_filename
 
-func _save_request_time(time: int, emotion: String):
+func _save_request_time(timestamp: int, request_time: int, emotion: String):
 	# function used in testing to save time taken to make a request and receive a response
 	var times = File.new()
 	if times.open(times_path, File.READ_WRITE) != 0:
 		print("Error opening file " + times_path)
 		return
 	times.seek_end()
-	times.store_csv_line([str(time), emotion])
+	times.store_csv_line([str(timestamp), str(request_time), emotion])
 	times.close()
-	print("Saved time for request: " + str(time))
+	print("Saved time for request: " + str(request_time))
 
 func _create_request_times_file():
 	var dir = Directory.new()
@@ -43,6 +43,7 @@ func _create_request_times_file():
 	if times.open(times_path, File.WRITE) != 0:
 		print("Error creating file " + times_path)
 		return
+	times.store_csv_line(['timestamp', 'request_time', 'emotion'])
 	times.close()
 	print("Created file " + times_filename)
 
@@ -75,9 +76,9 @@ func _handle_client_data(data: PoolByteArray) -> void:
 	print("Fetched emotion: ", newState)
 	$Music.change_song(newState)
 	
-	var connection_end = OS.get_ticks_usec()
-	var total_time = connection_end - _client.connection_start
-	_save_request_time(total_time, newState)
+	var now = OS.get_ticks_usec()
+	var total_time = now - _client.connection_start
+	_save_request_time(now / 1000, total_time, newState)
 	
 	var message: PoolByteArray = [97, 99, 107] # Bytes for "ack" in ASCII
 	_client.send(message)
